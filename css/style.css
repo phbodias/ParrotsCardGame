@@ -53,7 +53,7 @@ body{
   justify-content: center;
   position: absolute;
   backface-visibility: hidden;
-  transition: all .5s;
+  transition: all .7s;
   transform-style: preserve-3d;
 }
 
@@ -68,7 +68,7 @@ body{
   justify-content: center;
   position: absolute;
   backface-visibility: hidden;
-  transition: all .5s;
+  transition: all .7s;
   transform-style: preserve-3d;
 }
 
@@ -104,6 +104,5 @@ body{
 @media (max-width:614px){
   .title{
     font-size: 36px;
-
   }
 }

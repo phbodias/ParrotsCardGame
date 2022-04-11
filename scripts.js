@@ -21,12 +21,17 @@ function addcards(n){
 }
 
 function flip(card){
+    if (clicado >= 2){
+        return;
+    }
     attempts++;
+    clicado++;
     let cardselected = document.querySelector(".front-face-selected");
     let cardselectedback = document.querySelector(".back-face-selected");
     card.querySelector(".face").classList.add("front-face-selected");
     card.querySelector(".back-face").classList.add("back-face-selected");
     if (cardselected !== null){
+        clicado++;
         if (card.querySelector(".back-face").innerHTML === cardselectedback.innerHTML){
             card.querySelector(".face").classList.add("front-continue");
             card.querySelector(".back-face").classList.add("back-continue");
@@ -40,6 +45,7 @@ function flip(card){
             document.querySelector(".back-face-selected").classList.remove("back-face-selected");
             document.querySelector(".front-face-selected").classList.remove("front-face-selected");
             check();
+            clicado = 0;
         }, 1000);
     }
 
@@ -48,6 +54,10 @@ function flip(card){
 function check(){
     if (hits == number/2){
         alert("Você ganhou em "+ attempts + " jogadas!");
+        let again = prompt("Deseja jogar novamente? (responda sim ou não)");
+        if (again === "sim"){
+            window.location.reload();
+        }
     }
 }
 /*---------------------------------------------------------------------------------- */
@@ -73,6 +83,7 @@ let backs = [
 
 let attempts = 0;
 let hits = 0;
+let clicado = 0;
 /*---------------------------------------------------------------------------------- */
 
 
