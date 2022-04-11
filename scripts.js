@@ -6,28 +6,41 @@ function comparador() {
 
 function addcards(n){
     let usedcards = backs.slice(0, (n/2));
+    let usedcards2 = usedcards.sort(comparador);
+    usedcards = usedcards.concat(usedcards2);
+    usedcards = usedcards.sort(comparador);
     let cards = document.querySelector("ul");
-    let contador = 0;
     for (let i = 0; i < n; i++){
         cards.innerHTML += `
             <ul class="card" onClick="flip(this)">
                 <li class="face"><img src="/images/front.png"></li>
-                <li class="back-face face"><img src="${usedcards[contador]}"></li>
+                <li class="back-face back"><img src="${usedcards[i]}"></li>
             </ul>
         `
-        if (contador === usedcards.length - 1){
-            contador = 0;
-            usedcards = usedcards.sort(comparador);
-        }else{
-            contador++;
-        }
     }
 }
 
 function flip(card){
-    
+    let cardselected = document.querySelector(".front-face-selected");
+    let cardselectedback = document.querySelector(".back-face-selected");
+    card.querySelector(".face").classList.add("front-face-selected");
+    card.querySelector(".back-face").classList.add("back-face-selected");
+    if (cardselected !== null){
+        if (card.querySelector(".back-face").innerHTML === cardselectedback.innerHTML){
+            card.querySelector(".face").classList.add("front-continue");
+            card.querySelector(".back-face").classList.add("back-continue");
+            cardselected.classList.add("front-continue");
+            cardselectedback.classList.add("back-continue");
+        }
+        setTimeout(function(){
+            card.querySelector(".back-face").classList.remove("back-face-selected");
+            card.querySelector(".face").classList.remove("front-face-selected");
+            document.querySelector(".back-face-selected").classList.remove("back-face-selected");
+            document.querySelector(".front-face-selected").classList.remove("front-face-selected");
+        }, 1000);
+        
+    }
 }
-
 /*---------------------------------------------------------------------------------- */
 
 /* Variáveis globais */
@@ -39,13 +52,13 @@ while (number % 2 !== 0 || number < 4 || number >14){
 }
 
 let backs = [
-    "/images/bobrossparrot.gif",
-    "/images/explodyparrot.gif",
-    "/images/fiestaparrot.gif",
-    "/images/metalparrot.gif",
-    "/images/revertitparrot.gif",
-    "/images/tripletsparrot.gif",
-    "/images/chicken.gif",
+    "images/bobrossparrot.gif",
+    "images/explodyparrot.gif",
+    "images/fiestaparrot.gif",
+    "images/metalparrot.gif",
+    "images/revertitparrot.gif",
+    "images/tripletsparrot.gif",
+    "images/unicornparrot.gif",
 ]
 /*---------------------------------------------------------------------------------- */
 
