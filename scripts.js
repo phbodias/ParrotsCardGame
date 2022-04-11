@@ -21,6 +21,7 @@ function addcards(n){
 }
 
 function flip(card){
+    attempts++;
     let cardselected = document.querySelector(".front-face-selected");
     let cardselectedback = document.querySelector(".back-face-selected");
     card.querySelector(".face").classList.add("front-face-selected");
@@ -31,17 +32,26 @@ function flip(card){
             card.querySelector(".back-face").classList.add("back-continue");
             cardselected.classList.add("front-continue");
             cardselectedback.classList.add("back-continue");
+            hits++;
         }
         setTimeout(function(){
             card.querySelector(".back-face").classList.remove("back-face-selected");
             card.querySelector(".face").classList.remove("front-face-selected");
             document.querySelector(".back-face-selected").classList.remove("back-face-selected");
             document.querySelector(".front-face-selected").classList.remove("front-face-selected");
+            check();
         }, 1000);
-        
+    }
+
+}
+
+function check(){
+    if (hits == number/2){
+        alert("Você ganhou em "+ attempts + " jogadas!");
     }
 }
 /*---------------------------------------------------------------------------------- */
+
 
 /* Variáveis globais */
 
@@ -60,7 +70,11 @@ let backs = [
     "images/tripletsparrot.gif",
     "images/unicornparrot.gif",
 ]
+
+let attempts = 0;
+let hits = 0;
 /*---------------------------------------------------------------------------------- */
+
 
 /* Invocação de funções */
 backs = backs.sort(comparador);
