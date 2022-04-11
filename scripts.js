@@ -13,7 +13,7 @@ function addcards(n){
     for (let i = 0; i < n; i++){
         cards.innerHTML += `
             <ul class="card" onClick="flip(this)">
-                <li class="face"><img src="/images/front.png"></li>
+                <li class="face"><img src="images/front.png"></li>
                 <li class="back-face back"><img src="${usedcards[i]}"></li>
             </ul>
         `
