@@ -57,6 +57,9 @@ body{
   transform-style: preserve-3d;
 }
 
+.face img, base img{
+  width: 100px;
+}
 .back-face {
   transform: rotateY(180deg);
 }
